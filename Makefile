@@ -6,6 +6,16 @@ GOPROXY=direct
 GOSUMDB=off
 GOPRIVATE=github.com/jeffotoni/grpc-crud
 
+dev:
+	go run cmd/cmd.go
+
+proto:
+	buf mod update
+	buf build
+	buf generate
+
+.PHONY: dev proto
+
 build:
 	@echo "########## Compilando nossa API ... "
 	CGO_ENABLED=0 GOOS=linux go build --trimpath -ldflags="-s -w"
