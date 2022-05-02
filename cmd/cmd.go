@@ -32,9 +32,9 @@ func main() {
 
 	s := grpc.NewServer(grpc.ChainUnaryInterceptor(unary...))
 
-	poolsrv := server.New()
+	customer := server.New()
 
-	pb.RegisterPoolServiceServer(s, poolsrv)
+	pb.RegisterCustomersServiceServer(s, customer)
 
 	println("Grpc port:4001")
 	if err := s.Serve(lis); err != nil {
