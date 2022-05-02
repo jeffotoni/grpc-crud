@@ -14,6 +14,7 @@ import (
 var Addr = "localhost:4001"
 
 func main() {
+	id := flag.String("id", "", "document")
 	flag.Parse()
 	var opts []grpc.DialOption
 	opts = append(opts, grpc.WithTransportCredentials(insecure.NewCredentials()))
@@ -28,8 +29,8 @@ func main() {
 	log.Println("Get:")
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
-
-	getReq := &pb.GetRequest{Document: "tid-001"}
+	println("here:", *id)
+	getReq := &pb.GetRequest{Document: *id}
 	customer, err := client.Get(ctx, getReq)
 	if err != nil {
 		log.Fatalf("%v.Get(_) = _, %v: ", client, err)
