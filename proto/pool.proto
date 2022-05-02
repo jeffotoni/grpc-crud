@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "github.com/jeffotoni/grpc-crud/proto";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+
+service CustomersService {
+    rpc Get (GetRequest) returns (Customers) {
+        
+    }
+}
+
+//
+// Get
+//
+
+message Customers {
+	string Document = 1;
+	string Name = 2;
+	string BirthDate = 3;
+    repeated Contract Contract = 4;
+}
+
+message Plan {
+	string PlanKey = 1;
+	int64 ServiceActivationTimestamp = 2;
+}
+
+message Services {
+	string ServiceKey = 1;
+	int64 ServiceActivationTimestamp = 2;
+}
+
+message Contract {
+	string AssetID = 1;
+	string BillingProfileID = 2;
+	string StatusKey = 3;
+	Plan Plan = 4;
+	repeated Services Services = 5;
+}
+
+message GetRequest {
+    string document = 1;
+}
