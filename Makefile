@@ -27,6 +27,6 @@ update:
 	@rm -f go.*
 	go mod init github.com/jeffotoni/grpc-crud
 	go mod tidy
-	CGO_ENABLED=0 GOOS=linux go build --trimpath -ldflags="-s -w"
-	@echo "buid update completo..."
-	@echo "fim"
+	# CGO_ENABLED=0 GOOS=linux go build --trimpath -ldflags="-s -w" cmd/
+	# @echo "buid update completo..."
+	# @echo "fim"

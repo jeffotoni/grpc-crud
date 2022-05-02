@@ -7,7 +7,7 @@ import (
 )
 
 type Server struct {
-	proto.UnimplementedPoolServiceServer
+	proto.UnimplementedCustomersServiceServer
 }
 
 func New() *Server {
